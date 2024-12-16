@@ -1,25 +1,29 @@
 package com.booking_hoteles.Main.Modelos;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Habitacion {
-    // Atributos
-    private String tipo; // Ej: Habitación Doble, Suite, etc.
-    private String caracteristicas; // Ej: 2 camas dobles, aire acondicionado, etc.
+
+    private String tipo;
+    private String descripcion;
     private double precioPorNoche;
     private int capacidadAdultos;
-    private int capacidadNinos;
+    private int capacidadMenores;
     private boolean disponibilidad;
+    private List<Cliente> clientes;
 
-    // Constructor
-    public Habitacion(String tipo, String caracteristicas, double precioPorNoche, int capacidadAdultos, int capacidadNinos, boolean disponibilidad) {
+    public Habitacion(String tipo, String descripcion, double precioPorNoche, int capacidadAdultos, int capacidadMenores, boolean disponibilidad) {
         this.tipo = tipo;
-        this.caracteristicas = caracteristicas;
+        this.descripcion = descripcion;
         this.precioPorNoche = precioPorNoche;
         this.capacidadAdultos = capacidadAdultos;
-        this.capacidadNinos = capacidadNinos;
+        this.capacidadMenores = capacidadMenores;
         this.disponibilidad = disponibilidad;
+        this.clientes = new ArrayList<>();
     }
 
-    // Getters y Setters
     public String getTipo() {
         return tipo;
     }
@@ -28,12 +32,12 @@ public class Habitacion {
         this.tipo = tipo;
     }
 
-    public String getCaracteristicas() {
-        return caracteristicas;
+    public String getdDescripcion() {
+        return descripcion;
     }
 
-    public void setCaracteristicas(String caracteristicas) {
-        this.caracteristicas = caracteristicas;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public double getPrecioPorNoche() {
@@ -52,12 +56,12 @@ public class Habitacion {
         this.capacidadAdultos = capacidadAdultos;
     }
 
-    public int getCapacidadNinos() {
-        return capacidadNinos;
+    public int getCapacidadMenores() {
+        return capacidadMenores;
     }
 
-    public void setCapacidadNinos(int capacidadNinos) {
-        this.capacidadNinos = capacidadNinos;
+    public void setCapacidadMenores(int capacidadMenores) {
+        this.capacidadMenores = capacidadMenores;
     }
 
     public boolean isDisponibilidad() {
@@ -67,4 +71,32 @@ public class Habitacion {
     public void setDisponibilidad(boolean disponibilidad) {
         this.disponibilidad = disponibilidad;
     }
+
+    public List<Cliente> getReservas() {
+        return clientes;
+    }
+
+    public void setReservas(List<Cliente> reservas) {
+        this.clientes = reservas;
+    }
+
+    public boolean isAvailable(LocalDate startDate, LocalDate endDate) {
+        for (Cliente cliente : clientes) {
+
+            if (startDate.isBefore(cliente.getFechaFin()) && endDate.isAfter(cliente.getFechaInicio())) {
+                return false;
+            }
+        }
+        return disponibilidad;
+    }
+
+    // Method to add a reservation
+    public void addReservation(Reservation reservation) {
+        this.reservations.add(reservation);
+    }
+
+    public int getCapacity() {
+        return adultCapacity + childCapacity;
+    }
+
 }

@@ -22,7 +22,6 @@ public class Hotel {
         this.cliente = new ArrayList<>();
     }
 
-    // Getters y Setters
     public String getNombre() {
         return nombre;
     }
@@ -83,7 +82,6 @@ public class Hotel {
         this.cliente = reservas;
     }
 
-    // Métodos adicionales para agregar habitaciones y reservas
     public void agregarHabitacion(Habitacion habitacion) {
         this.habitaciones.add(habitacion);
     }

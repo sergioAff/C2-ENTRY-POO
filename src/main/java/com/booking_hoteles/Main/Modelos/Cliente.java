@@ -4,60 +4,59 @@ import java.time.LocalDate;
 
 public class Cliente {
 
-    private String nombreCliente;
-    private String apellidoCliente;
-    private String emailCliente;
+    private String nombre;
+    private String apellido;
+    private String email;
     private String nacionalidad;
     private String numeroTelefono;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private int cantidadAdultos;
-    private int cantidadNinos;
+    private int cantidadMenores;
     private int cantidadHabitaciones;
     private String tipoHabitacion;
     private String horaLlegada;
 
-    public Cliente(String nombreCliente, String apellidoCliente, String emailCliente,
+    public Cliente(String nombre, String apellido, String email,
                        String nacionalidad, String numeroTelefono, LocalDate fechaInicio,
-                       LocalDate fechaFin, int cantidadAdultos, int cantidadNinos,
+                       LocalDate fechaFin, int cantidadAdultos, int cantidadMenores,
                        int cantidadHabitaciones, String tipoHabitacion, String horaLlegada) {
-        this.nombreCliente = nombreCliente;
-        this.apellidoCliente = apellidoCliente;
-        this.emailCliente = emailCliente;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
         this.nacionalidad = nacionalidad;
         this.numeroTelefono = numeroTelefono;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.cantidadAdultos = cantidadAdultos;
-        this.cantidadNinos = cantidadNinos;
+        this.cantidadMenores = cantidadMenores;
         this.cantidadHabitaciones = cantidadHabitaciones;
         this.tipoHabitacion = tipoHabitacion;
         this.horaLlegada = horaLlegada;
     }
 
-    // Getters y Setters
-    public String getNombreCliente() {
-        return nombreCliente;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setNombreCliente(String nombreCliente) {
-        this.nombreCliente = nombreCliente;
+    public void setNombre(String nombreCliente) {
+        this.nombre = nombreCliente;
     }
 
-    public String getApellidoCliente() {
-        return apellidoCliente;
+    public String getApellidoC() {
+        return apellido;
     }
 
-    public void setApellidoCliente(String apellidoCliente) {
-        this.apellidoCliente = apellidoCliente;
+    public void setApellido(String apellidoCliente) {
+        this.apellido = apellidoCliente;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    public void setEmail(String emailCliente) {
+        this.email = emailCliente;
     }
 
     public String getNacionalidad() {
@@ -101,11 +100,11 @@ public class Cliente {
     }
 
     public int getCantidadNinos() {
-        return cantidadNinos;
+        return cantidadMenores;
     }
 
     public void setCantidadNinos(int cantidadNinos) {
-        this.cantidadNinos = cantidadNinos;
+        this.cantidadMenores = cantidadNinos;
     }
 
     public int getCantidadHabitaciones() {
