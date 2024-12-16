@@ -27,7 +27,7 @@ public class ServicioHotel {
             if (tipoAlojamiento != null && hotel.getTipoAlojamiento() != tipoAlojamiento) {
                 continue;
             }
-            
+
             boolean tieneDisponibilidad = hotel.getHabitaciones().stream().anyMatch(habitacion ->
                     habitacion.isAvailable(fechaInicio, fechaFin) && habitacion.getCapacity() >= (adultos + menores));
 
