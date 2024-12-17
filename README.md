@@ -1,26 +1,13 @@
-# Proyecto de Booking Hoteles
 
-Este es un proyecto que simula la gestión de reservas de hoteles. Se implementa utilizando Java y maneja la información sobre varios hoteles y sus habitaciones.
+# Taller #3☕
+👉Implementar Herencia.
 
-## Descripción
+👉Usar una clase abstracta.
 
-El proyecto permite consultar, modificar y gestionar información relacionada con los hoteles de manera simple y eficiente. Se utilizan listas para almacenar los datos, ya que no se emplean bases de datos.
+👉Usar al menos una interfaz.
 
-## Comandos útiles
+👉Encapsulamiento en todas las clases.
 
-- `git log --graph --oneline --decorate` para ver el historial de commits de manera gráfica.
+👉Métodos sobrecargados.
 
-## Historial de commits
-
-A continuación, se muestra el historial de commits con la representación gráfica:
-
-![Git Log](https://github.com/user-attachments/assets/cf228cfa-fddc-488e-a5b5-a5b392471502)
-
-
-
-Para clonar el proyecto:
-
-```bash
-git clone https://github.com/sergioAff/booking-hoteles.git
-cd booking-hoteles
-```
+👉Evidencia de composicion, es decir un objeto dentro de un objeto.
