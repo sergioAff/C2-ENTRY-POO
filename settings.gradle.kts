@@ -1,2 +1,2 @@
-rootProject.name = "booking-hoteles"
+rootProject.name = "C2-ENTRY-POO"
 
