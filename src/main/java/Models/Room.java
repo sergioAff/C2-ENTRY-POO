@@ -55,6 +55,34 @@ public abstract class Room {
         return reservations;
     }
 
+    public double getPrice(double price, int[]days){
+        boolean lastDays = false;
+        boolean midMonth = false;
+        boolean firstDays = false;
+
+        for (int day : days) {
+            if (day > 25) {
+                 lastDays = true;
+            }
+            if (day >= 10 && day <= 15) {
+                 midMonth = true;
+            }
+            if (day >= 5 && day <= 10) {
+                 firstDays = true;
+            }
+        }
+
+        if (lastDays) {
+            price *= 1.15;
+        } else if (midMonth) {
+            price *= 1.10;
+        } else if (firstDays) {
+            price *= 0.92;
+        }
+
+        return price;
+    }
+
     public void setReservations(List<Clients> reservations) {
         this.reservations = reservations;
     }

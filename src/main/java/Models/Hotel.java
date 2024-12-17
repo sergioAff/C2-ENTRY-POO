@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Hotel {
 
-    private String name;
-    private String city;
-    private Type type;
-    private double rating;
-    private boolean lunch;
-    private List<Room> rooms;
-    private List<Clients> clients;
+    private final String name;
+    private final String city;
+    private final Type type;
+    private final double rating;
+    private final boolean lunch;
+    private final List<Room> rooms;
+    private final List<Clients> clients;
 
     public Hotel(String name, String city, Type type, double rating, boolean lunch) {
         this.name = name;
@@ -46,6 +46,8 @@ public class Hotel {
     public List<Clients> getClients() {
         return clients;
     }
+
+    public boolean isLunch () {return lunch;}
 
     public void addRoom(Room room) {
         this.rooms.add(room);

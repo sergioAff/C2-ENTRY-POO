@@ -92,7 +92,7 @@ public class Main {
             System.out.print("Número de Niños: ");
             int childrenCount = Integer.parseInt(scanner.nextLine());
 
-            String reservationResponse = service.reservation(firstName, surname, emailAddress, birthDate, country, phone,
+            String reservationResponse = service.reserve(firstName, surname, emailAddress, birthDate, country, phone,
                     arrivalHour, startStay, endStay, adultCount, childrenCount);
             System.out.println(reservationResponse);
         } catch (Exception ex) {
@@ -173,7 +173,7 @@ public class Main {
             System.out.print("Fecha de Inicio (AAAA-MM-DD): ");
             LocalDate start = LocalDate.parse(scanner.nextLine());
 
-            LocalDate end = null;
+            LocalDate end;
 
             if (type.equals(Type.DIA_DE_SOL)){
                 end = start;

@@ -101,7 +101,7 @@ public class HotelService implements IHotelService {
     }
 
     @Override
-    public String reservation(String firstName, String lastName, String email, LocalDate dateBirth , String nationality, String phone, String arrivalTime, LocalDate startDate,
+    public String reserve(String firstName, String lastName, String email, LocalDate dateBirth , String nationality, String phone, String arrivalTime, LocalDate startDate,
                               LocalDate endDate, int adults, int children) {
         if (firstName == null || lastName == null || email == null || phone == null) {
             throw new IllegalArgumentException("Ingrese los datos personales.");
