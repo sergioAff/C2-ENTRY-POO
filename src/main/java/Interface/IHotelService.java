@@ -1,4 +1,4 @@
-package Interfaces;
+package Interface;
 
 import Models.Type;
 import Models.Hotel;

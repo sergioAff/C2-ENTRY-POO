@@ -1,6 +1,6 @@
 package Services;
 
-import Interfaces.IHotelService;
+import Interface.IHotelService;
 import Models.Type;
 import Models.Hotel;
 import Models.Clients;

@@ -128,4 +128,6 @@ public abstract class Room {
     public void addReservation(Clients reservation) {
         this.reservations.add(reservation);
     }
+
+    public abstract String getRoomDetails();
 }
