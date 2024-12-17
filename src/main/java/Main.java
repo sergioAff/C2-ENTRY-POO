@@ -160,22 +160,28 @@ public class Main {
             String selectedCity = availableCities.get(cityIndex - 1);
 
             System.out.println("Seleccione Tipo de Alojamiento:");
-            System.out.println("1. HOTEL\n2. APARTAMENTO\n3. FINCA\n4. DIA_DE_SOL\n5. Sin Preferencia");
+            System.out.println("1. Hotel\n2. Apartamento\n3. Finca\n4. Día de Sol\n5. Todos");
             int typeSelection = Integer.parseInt(scanner.nextLine());
 
-            Type accommodationType = switch (typeSelection) {
+            Type type = switch (typeSelection) {
                 case 1 -> Type.HOTEL;
                 case 2 -> Type.APARTAMENTO;
                 case 3 -> Type.FINCA;
                 case 4 -> Type.DIA_DE_SOL;
                 default -> null;
             };
-
             System.out.print("Fecha de Inicio (AAAA-MM-DD): ");
             LocalDate start = LocalDate.parse(scanner.nextLine());
 
-            System.out.print("Fecha de Fin (AAAA-MM-DD): ");
-            LocalDate end = LocalDate.parse(scanner.nextLine());
+            LocalDate end = null;
+
+            if (type.equals(Type.DIA_DE_SOL)){
+                end = start;
+            }
+            else{
+                System.out.println("Fecha de Fin (AAAA-MM-DD): ");
+                end= LocalDate.parse(scanner.nextLine());
+            }
 
             System.out.print("Número de Adultos: ");
             int adults = Integer.parseInt(scanner.nextLine());
@@ -186,7 +192,7 @@ public class Main {
             System.out.print("Número de Habitaciones: ");
             int roomCount = Integer.parseInt(scanner.nextLine());
 
-            List<String> searchResults = service.searchHotels(selectedCity, accommodationType, start, end, adults, kids, roomCount);
+            List<String> searchResults = service.searchHotels(selectedCity, type, start, end, adults, kids, roomCount);
 
             System.out.println("\nResultados de Búsqueda:");
             if (searchResults.isEmpty()) {

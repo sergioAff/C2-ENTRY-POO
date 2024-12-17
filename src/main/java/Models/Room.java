@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Room {
+public abstract class Room {
     private String type;
     private String description;
     private double price;
