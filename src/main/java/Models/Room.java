@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Room {
-    private String type;
-    private String description;
-    private double price;
-    private int adultCapacity;
-    private int childCapacity;
+    private final String type;
+    private final String description;
+    private final double price;
+    private final int adultCapacity;
+    private final int childCapacity;
     private boolean availability;
     private List<Clients> reservations;
 
@@ -64,10 +64,10 @@ public abstract class Room {
             if (day > 25) {
                  lastDays = true;
             }
-            if (day >= 10 && day <= 15) {
+            else if (day >= 10 && day <= 15) {
                  midMonth = true;
             }
-            if (day >= 5 && day <= 10) {
+            else if (day >= 5 && day <= 10) {
                  firstDays = true;
             }
         }
@@ -81,6 +81,31 @@ public abstract class Room {
         }
 
         return price;
+    }
+
+    public double getPrice(double price, int day){
+        boolean lastDays = false;
+        boolean midMonth = false;
+        boolean firstDays = false;
+
+        if (day > 25) {
+            lastDays = true;
+        }
+        else if (day >= 10 && day <= 15) {
+            midMonth = true;
+        }
+        else if (day >= 5 && day <= 10) {
+            firstDays = true;
+        }
+
+        if (lastDays) {
+            price *= 1.15;
+        } else if (midMonth) {
+            price *= 1.10;
+        } else if (firstDays) {
+            price *= 0.92;
+        }
+     return  price;
     }
 
     public void setReservations(List<Clients> reservations) {
