@@ -1,133 +1,76 @@
 package Models;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
-public abstract class Room {
-    private final String type;
-    private final String description;
-    private final double price;
-    private final int adultCapacity;
-    private final int childCapacity;
-    private boolean availability;
-    private List<Clients> reservations;
+public class Room {
+    private String description;
+    private String roomType;
+    private float basePrice;
+    private int capacityMinors;
+    private int capacityAdults;
+    private Set<LocalDate> availability;
 
-    public Room(String type, String description, double price, int adultCapacity, int childCapacity, boolean availability) {
-        this.type = type;
+    public Room(String description, String roomType, float basePrice, int capacityMinors, int capacityAdults, Set<LocalDate> availability) {
         this.description = description;
-        this.price = price;
-        this.adultCapacity = adultCapacity;
-        this.childCapacity = childCapacity;
+        this.roomType = roomType;
+        this.basePrice = basePrice;
+        this.capacityMinors = capacityMinors;
+        this.capacityAdults = capacityAdults;
         this.availability = availability;
-        this.reservations = new ArrayList<>();
     }
 
-    public String getType() {
-        return type;
+    public void showInformation() {
+        System.out.println("- Tipo de Habitación: " + roomType);
+        System.out.println("Descripción: " + description);
+        System.out.println("Precio Base: $" + basePrice);
+        System.out.println("Capacidad para Menores: " + capacityMinors);
+        System.out.println("Capacidad para Adultos: " + capacityAdults);
     }
 
-    public String getFeatures() {
+    public void obtenerDisponibilidad() {
+        if (availability.isEmpty()) {
+            System.out.println("No hay fechas disponibles.");
+        } else {
+            System.out.println("Fechas disponibles:");
+            for (LocalDate date : availability) {
+                System.out.println(date);
+            }
+        }
+    }
+
+    public boolean isAvailableOn(LocalDate date) {
+        return availability.contains(date);
+    }
+
+    public String getDescription() {
         return description;
     }
 
-    public double getPriceNight() {
-        return price;
+
+    public String getRoomType() {
+        return roomType;
     }
 
-    public int getAdultCapacity() {
-        return adultCapacity;
+
+    public float getBasePrice() {
+        return basePrice;
     }
 
-    public int getChildCapacity() {
-        return childCapacity;
+
+    public int getCapacityMinors() {
+        return capacityMinors;
     }
 
-    public boolean isAvailability() {
+    public int getCapacityAdults() {
+        return capacityAdults;
+    }
+
+    public Set<LocalDate> getAvailability() {
         return availability;
     }
 
-    public void setAvailability(boolean availability) {
+    public void setAvailability(Set<LocalDate> availability) {
         this.availability = availability;
     }
-
-    public List<Clients> getReservations() {
-        return reservations;
-    }
-
-    public double getPrice(double price, int[]days){
-        boolean lastDays = false;
-        boolean midMonth = false;
-        boolean firstDays = false;
-
-        for (int day : days) {
-            if (day > 25) {
-                 lastDays = true;
-            }
-            else if (day >= 10 && day <= 15) {
-                 midMonth = true;
-            }
-            else if (day >= 5 && day <= 10) {
-                 firstDays = true;
-            }
-        }
-
-        if (lastDays) {
-            price *= 1.15;
-        } else if (midMonth) {
-            price *= 1.10;
-        } else if (firstDays) {
-            price *= 0.92;
-        }
-
-        return price;
-    }
-
-    public double getPrice(double price, int day){
-        boolean lastDays = false;
-        boolean midMonth = false;
-        boolean firstDays = false;
-
-        if (day > 25) {
-            lastDays = true;
-        }
-        else if (day >= 10 && day <= 15) {
-            midMonth = true;
-        }
-        else if (day >= 5 && day <= 10) {
-            firstDays = true;
-        }
-
-        if (lastDays) {
-            price *= 1.15;
-        } else if (midMonth) {
-            price *= 1.10;
-        } else if (firstDays) {
-            price *= 0.92;
-        }
-     return  price;
-    }
-
-    public void setReservations(List<Clients> reservations) {
-        this.reservations = reservations;
-    }
-
-    public int getCapacity() {
-        return adultCapacity + childCapacity;
-    }
-
-    public boolean isAvailable(LocalDate startDate, LocalDate endDate) {
-        for (Clients reservation : reservations) {
-            if (startDate.isBefore(reservation.getEndDate()) && endDate.isAfter(reservation.getStartDate())) {
-                return false;
-            }
-        }
-        return availability;
-    }
-
-    public void addReservation(Clients reservation) {
-        this.reservations.add(reservation);
-    }
-
-    public abstract String getRoomDetails();
 }
